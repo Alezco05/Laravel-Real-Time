@@ -34,6 +34,6 @@ class UserSessionChanged implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('notifications');
+        return new PrivateChannel('notifications');
     }
 }

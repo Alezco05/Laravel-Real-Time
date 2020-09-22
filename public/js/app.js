@@ -43332,7 +43332,22 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+var _require = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js"),
+    Echo = _require["default"];
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+window.Echo["private"]('notifications').listen('UserSessionChanged', function (e) {
+  console.log(e);
+  var notifiactionElement = document.querySelector('#notification');
+  notifiactionElement.innerText = e.message; // Remove the current class
+
+  notifiactionElement.classList.remove('invisible');
+  notifiactionElement.classList.remove('alert-sucess');
+  notifiactionElement.classList.remove('alert-danger'); // Add Class of The event
+
+  notifiactionElement.classList.add('alert-' + e.type);
+});
 
 /***/ }),
 
